@@ -1,5 +1,12 @@
 const db = require('better-sqlite3')('views.db');
-
+db.exec(`
+    CREATE TABLE IF NOT EXISTS views (
+         id INTEGER PRIMARY KEY AUTOINCREMENT,
+         uuid TEXT NOT NULL,
+         url TEXT NOT NULL,
+         count INTEGER DEFAULT 1
+     ) STRICT;
+   `);
 export function initDatabase() {
     db.exec(`
         CREATE TABLE IF NOT EXISTS views (
